@@ -1,0 +1,8 @@
+<section id="sidebar-nav-user">
+  <div class="username">
+    <%#= link_to current_user.username, current_user %>
+  </div>
+  <div class="logoutLink">
+    <%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i>Logout'.html_safe, "#ss", method: :delete, class: "defaultButton" %>
+  </div>
+</section>

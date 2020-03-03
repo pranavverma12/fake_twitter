@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fake Twitter</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="<%= controller_name %>">
+    <section class='' id="wrapper">
+      <%= render "layouts/sidebar/sidebar" %>
+
+      <section id="main">
+        <%= render "layouts/flash_notices" %>
+        
+        <section id="mainBody">
+          <%= yield %>
+        </section>
+
+      </section>
+    </section>
+  </body>
+</html>
