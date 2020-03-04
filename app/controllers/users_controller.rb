@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create]
 
   def index
-    @users = User.all.paginate(page: params[:page], per_page: 10)
+    if params[:search].blank?
+      @users = User.all.paginate(page: params[:page], per_page: 10)
+    else
+      @users = User.search(params[:search].downcase).paginate(page: params[:page], per_page: 10)
+    end
   end
 
   def show; end

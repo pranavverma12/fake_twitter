@@ -1,5 +1,14 @@
 <section class='scaffold'>
   <h2 class="breadcrumbs">Users</h2>
+  
+  <div>
+    <%= form_for users_path, :html => { :style => 'background-color:transparent; padding: 0; border:0;', :method => 'get'} do %>
+      <p>
+        <%= text_field_tag :search, params[:search], class: "input_search_form", placeholder: "Enter username or Email to search User" %>
+        <%= submit_tag "Search", :name => nil, class: "defaultButton" %>
+      </p>
+    <% end %>
+  </div>
 
   <table class="scaffoldListTable">
     <thead>

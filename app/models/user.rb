@@ -40,6 +40,8 @@ class User < ApplicationRecord
                                  maximum: PASSWORD_MAX_LENGTH },
                        if: -> { password && errors[:password].blank? }
 
+  scope :search, ->(option) {where("username like ? or email like ?", "%#{option}%", "%#{option}%")}
+
   private
 
   def strip_whitespace
