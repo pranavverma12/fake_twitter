@@ -1,0 +1,30 @@
+<section class='scaffold'>
+  <% provide(:title, @title) %>
+  <center><h3><%= @title %></h3></center>
+  <table class="scaffoldDataTable">
+    <tbody>
+      <tr>
+        <th></th>
+
+        <th>Username</th>
+
+        <th>Email</th>
+
+        <th>Posts</th>
+      </tr>
+
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= render "users/avatar", user: user, small: true%></td>
+
+          <td><%= user.username %></td>
+
+          <td><%= user.email %></td>
+
+          <td>15</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
+</section>

@@ -1,11 +1,13 @@
 <ul class="nav">
-  <li>
-    <%= link_to '<i class="fa fa-group" aria-hidden="true"></i>Following'.html_safe, "#" , class: "" %>
+  <li style="width: 80%; display: inline-block;">
+    <%= link_to '<i class="fa fa-group" aria-hidden="true"></i>Following'.html_safe, following_user_path(@current_user) , class: "" %>
   </li>
+  <p class="following_count"><%= @current_user.following.count %></p>
 
-  <li>
-    <%= link_to '<i class="fa fa-users" aria-hidden="true"></i>Followers'.html_safe, "#" , class: "" %>
+  <li style="width: 80%; display: inline-block;">
+    <%= link_to '<i class="fa fa-users" aria-hidden="true"></i>Followers'.html_safe, followers_user_path(@current_user) %>
   </li>
+  <p class="followers_count"><%= @current_user.followers.count %></p>
   
   <li>
     <%= link_to '<i class="fa fa-rss" aria-hidden="true"></i>Posts'.html_safe, "#" , class: "" %>

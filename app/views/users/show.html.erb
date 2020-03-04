@@ -17,6 +17,8 @@
         <th>Created</th>
 
         <th>Last Updated</th>
+
+        <th></th>
       </tr>
 
       <tr>
@@ -29,6 +31,8 @@
         <td><%= @user.created_at.strftime("%H:%M:%S %A %d %B %Y") %></td>
 
         <td><%= @user.updated_at.strftime("%H:%M:%S %A %d %B %Y") %></td>
+
+        <td><%= render 'follow_unfollow', user: @user %></td>
       </tr>
     </tbody>
   </table>

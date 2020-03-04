@@ -363,4 +363,12 @@ label {
     text-decoration: none;
     color: black; }
     .apple_pagination a:hover, .apple_pagination a:focus {
-      text-decoration: underline; }
+      text-decoration: underline; 
+}
+
+.followers_count, .following_count {
+  display: inline-block;
+  background-color: red;
+  padding: 2px 5px 2px 5px;
+  color: white;
+}
