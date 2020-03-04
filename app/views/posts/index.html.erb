@@ -1,0 +1,7 @@
+<section class='scaffold'>
+  <h2 class="breadcrumbs">Posts</h2>
+
+  <div style="margin-bottom: 15px; text-align: right;"><%= link_to '<i class="fa fa-user-plus" aria-hidden="true"></i>New Post'.html_safe, new_post_path, class: 'addButton' %></div>
+
+  <%= render 'posts_layout', posts: @posts %>
+</section>

@@ -1,7 +1,8 @@
 <section id="sidebar">
   <section id="sidebar-header">
-    <a href="">      
-      <span>Fake Twitter</span>
+    <a href="<%= root_path %>">      
+      <span>Lookalike</span>
+      <i class="fa fa-twitter" aria-hidden="true"></i>
     </a>
   </section>
 
@@ -12,6 +13,14 @@
       <%= render "layouts/sidebar/navigation" %>
     </section>
   <% else %>
-    <%= link_to '<i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up'.html_safe, new_user_path, class: "addButton" %>
+    <center>
+      <div style="margin-top: 50%;">
+        <%= link_to '<i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up'.html_safe, new_user_path, class: "addButton", :style => 'display: block;' %>
+      </div>
+
+      <div style="margin-top: 25px;">
+        <%= link_to '<i class="fa fa-sign-in" aria-hidden="true"></i>Log In'.html_safe, root_path, class: "defaultButton", :style => 'display: block;' %>
+      </div>
+    </center>
   <% end %>
 </section>

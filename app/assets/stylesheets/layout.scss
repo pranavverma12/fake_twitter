@@ -29,8 +29,8 @@ body {
       background-color: $dark-blue;
 
       #sidebar-header {
-        height: 66px;
-        padding: 16px;
+        padding: 23px 0 23px 0;
+        text-align: center;
 
         a {
           font-size: 22px;
@@ -372,3 +372,45 @@ label {
   padding: 2px 5px 2px 5px;
   color: white;
 }
+
+.dropbtn {
+  color: #6c757d;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  width: 28%;
+  text-align: left;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block; width: 82%; margin-left: 34px;}
+
+.dropdown:hover .dropbtn {background-color: #3b7ddd; color: white; width: 85%;}

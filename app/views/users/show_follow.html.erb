@@ -15,13 +15,13 @@
 
       <% @users.each do |user| %>
         <tr>
-          <td><%= render "users/avatar", user: user, small: true%></td>
+          <td><%= link_to (render "users/avatar", user: user, small: true), user%></td>
 
           <td><%= user.username %></td>
 
           <td><%= user.email %></td>
 
-          <td>15</td>
+          <td><%= user.posts.count %></td>
         </tr>
       <% end %>
     </tbody>

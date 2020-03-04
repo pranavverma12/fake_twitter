@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy following followers]
 
   skip_before_action :authenticate_user!, only: %i[new create]
 
   def index
-    if params[:search].blank?
-      @users = User.all.paginate(page: params[:page], per_page: 10)
-    else
-      @users = User.search(params[:search].downcase).paginate(page: params[:page], per_page: 10)
-    end
+    users = if params[:search].blank?
+              User.all
+            else
+              User.search(params[:search].downcase)
+            end
+    @users = users.paginate(page: params[:page], per_page: 10)
   end
 
   def show; end
@@ -23,7 +26,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = 'User was successfully created.'
+      flash[:success] = 'User was successfully registered.'
       redirect_to root_path
     else
       flash.now[:error] = I18n.t(:form_has_errors, scope: 'errors.messages')
@@ -49,13 +52,13 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
+    @title = 'Following'
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
+    @title = 'Followers'
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end

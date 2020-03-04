@@ -1,6 +1,6 @@
 <ul class="nav">
   <li style="width: 80%; display: inline-block;">
-    <%= link_to '<i class="fa fa-group" aria-hidden="true"></i>Following'.html_safe, following_user_path(@current_user) , class: "" %>
+    <%= link_to '<i class="fa fa-group" aria-hidden="true"></i>Following'.html_safe, following_user_path(@current_user) %>
   </li>
   <p class="following_count"><%= @current_user.following.count %></p>
 
@@ -10,11 +10,19 @@
   <p class="followers_count"><%= @current_user.followers.count %></p>
   
   <li>
-    <%= link_to '<i class="fa fa-rss" aria-hidden="true"></i>Posts'.html_safe, "#" , class: "" %>
+    <%= link_to '<i class="fa fa-cog fa-spin" aria-hidden="true"></i>All Users'.html_safe, users_path %>
   </li>
-  
+
   <li>
-    <%= link_to '<i class="fa fa-cog fa-spin" aria-hidden="true"></i>All Users'.html_safe, users_path , class: "" %>
+    <div class="dropdown">
+      <i class="fa fa-tasks" aria-hidden="true" style="margin-left: 16px; color: #153d77"></i>
+      <button class="dropbtn">Posts</button>
+      <div class="dropdown-content">
+        <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>Create'.html_safe, new_post_path %>
+        <%= link_to '<i class="fa fa-rss" aria-hidden="true"></i>My Feeds'.html_safe, posts_path %>
+        <%= link_to '<i class="fa fa-rss-square" aria-hidden="true"></i>Feeds'.html_safe, feeds_post_path(current_user.id) %>
+      </div>
+    </div>
   </li>
 
   <li class='border'></li>

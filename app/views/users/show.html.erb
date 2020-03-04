@@ -38,6 +38,16 @@
   </table>
   
   <p>
-    <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>Edit User'.html_safe, edit_user_path(@user), class: "defaultButton" %>
+    <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>Edit User'.html_safe, edit_user_path(@user), class: "defaultButton" if current_user.id == @user.id%>
   </p>
 </section>
+
+<% if current_user.following?(@user)%>
+  <section class='scaffold'>
+    <h2 class="breadcrumbs">
+      <%= @user.username.capitalize %> Posts
+    </h2>
+    
+    <%= render 'posts/posts_layout', posts: @user.posts.paginate(page: params[:page], per_page: 5) %>
+  </section>
+<% end %>

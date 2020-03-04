@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   NotAuthorized = Class.new(StandardError)
 
@@ -15,10 +17,6 @@ class ApplicationController < ActionController::Base
       end
       format.any { head :forbidden }
     end
-  end
-
-  def adding_custom_errors(model_name, field_name, message)
-    model_name.errors.add(field_name.to_s, message)
   end
 
   private

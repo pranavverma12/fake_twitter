@@ -14,7 +14,9 @@
     <thead>
       <tr>
         <th>Username</th>
+        
         <th>Email</th>
+        
         <th colspan="3">Actions</th>
       </tr>
     </thead>
@@ -23,14 +25,21 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= link_to user.username, user %></td>
+          
           <td><%= link_to user.email, user %></td>
+          
           <% if current_user.id == user.id %>
             <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_user_path(user), title: "Edit User" %></td>
+          
             <td><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, user, method: :delete, data: { confirm: "Are you sure you want to delete #{user.username}?" }, title: "Delete User" %></td>
+          
             <td></td>
           <% else %>
+           
             <td></td>
+           
             <td></td>
+           
             <td><%= render 'follow_unfollow.html', user: user %></td>
           <% end %>
         </tr>

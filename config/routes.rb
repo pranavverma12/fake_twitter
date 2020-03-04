@@ -1,4 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
+  resources :posts do
+    get :feeds, on: :member
+  end
 
   resources :users do
     member do
@@ -12,7 +17,7 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy, as: :logout
   end
 
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: %i[create destroy]
 
   root 'sessions#new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

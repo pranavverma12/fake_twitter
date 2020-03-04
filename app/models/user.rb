@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_secure_password
 
@@ -13,23 +15,27 @@ class User < ApplicationRecord
   before_validation :downcase
   before_validation :strip_whitespace
 
-  has_many :active_relationships, class_name:  "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent:   :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
-                                   foreign_key: "followed_id",
-                                   dependent:   :destroy
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: 'follower_id',
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  validates :email, presence: true
+  has_many :posts, dependent: :destroy
+
+  validates :email, :username, :password, presence: true
+
   validates :email, length: { maximum: EMAIL_MAX_LENGTH,
                               if: :email }
   validates :email, format: { with: EMAIL_REGEX },
                     if: -> { errors[:email].blank? }
+  validates :email, uniqueness: { case_sensitive: false },
+                    if: -> { errors[:username].blank? }
 
-  validates :username, presence: true
   validates :username, no_spaces: true, if: -> { errors[:username].blank? }
   validates :username, number_of_lines: { maximum: 1 },
                        if: -> { errors[:username].blank? }
@@ -41,7 +47,6 @@ class User < ApplicationRecord
   validates :username, uniqueness: { case_sensitive: false },
                        if: -> { errors[:username].blank? }
 
-  validates :username, presence: true
   validates :password, no_spaces: true,
                        if: -> { password && errors[:password].blank? }
   validates :password, number_of_lines: { maximum: 1 },
@@ -50,7 +55,10 @@ class User < ApplicationRecord
                                  maximum: PASSWORD_MAX_LENGTH },
                        if: -> { password && errors[:password].blank? }
 
-  scope :search, ->(option) {where("username like ? or email like ?", "%#{option}%", "%#{option}%")}
+  scope :search, lambda { |option|
+                   where('username like ? or email like ?', "%#{option}%",
+                         "%#{option}%")
+                 }
 
   # Follow a User
   def follow(other_user)
@@ -65,6 +73,11 @@ class User < ApplicationRecord
   # Returns true if the current user is following the other User.
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def feed
+    following_ids = 'SELECT followed_id FROM relationships WHERE follower_id = :user_id'
+    Post.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
   end
 
   private

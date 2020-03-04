@@ -1,0 +1,56 @@
+<%= form_with(model: @post, local: true) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    
+    <%= form.text_area :description %>
+
+    <% if @post.errors[:description] %>
+      <% @post.errors[:description].each do |message| %>
+        <p class="errorMessage">
+          <%= message %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo %>
+    
+    <%= form.file_field :photo %>
+
+    <% if @post.errors[:photo] %>
+      <% @post.errors[:photo].each do |message| %>
+        <p class="errorMessage">
+          <%= message %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <% if @post.persisted? %>
+      <button type="submit" name="commit" class="addButton">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>Update Post
+      </button>
+
+      <%= link_to '<i class="fa fa-times-circle" aria-hidden="true"></i>Cancel'.html_safe, @post, class: "destroyButton" %>
+    <% else %>
+      <button type="submit" name="commit" class="addButton">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>Create Post
+      </button>
+      <%= link_to '<i class="fa fa-times-circle" aria-hidden="true"></i>Cancel'.html_safe, users_path, class: "destroyButton" %>
+    <% end %>
+  </div>
+<% end %>
