@@ -8,6 +8,8 @@
   <table class="scaffoldDataTable">
     <tbody>
       <tr>
+        <th></th>
+
         <th>Username</th>
 
         <th>Email</th>
@@ -18,6 +20,8 @@
       </tr>
 
       <tr>
+        <td><%= render "users/avatar", user: @user, small: true%></td>
+
         <td><%= @user.username %></td>
 
         <td><%= @user.email %></td>

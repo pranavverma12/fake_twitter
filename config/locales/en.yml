@@ -31,3 +31,17 @@
 
 en:
   hello: "Hello world"
+
+  already_logged_in: 'You are already logged in as %{username}'
+  logout_success: 'You have been logged out'
+  login_success: 'You have successfully logged in as %{username}'
+
+  errors:
+    messages:
+      too_many_lines: 'contains too many lines (maximum is %{count} lines)'
+      too_few_lines: 'contains too few lines (minimum is %{count} lines)'
+      no_spaces: 'cannot contain spaces'
+      username_or_password_incorrect: 'Username or Password are incorrect'
+      username_cannnot_be_empty: 'Username cannot be empty'
+      password_cannnot_be_empty: 'Password cannot be empty'
+      form_has_errors: 'The form below has errors'

@@ -1,8 +1,17 @@
 <section id="sidebar">
   <section id="sidebar-header">
-    <a href="">
-      
+    <a href="">      
       <span>Fake Twitter</span>
     </a>
   </section>
+
+  <% if current_user %>
+    <section id="sidebar-nav">
+      <%= render "layouts/sidebar/current_user_info" %>
+
+      <%= render "layouts/sidebar/navigation" %>
+    </section>
+  <% else %>
+    <%= link_to '<i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up'.html_safe, new_user_path, class: "addButton" %>
+  <% end %>
 </section>

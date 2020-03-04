@@ -1,7 +1,7 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
+
+  skip_before_action :authenticate_user!, only: %i[new create]
 
   def index
     @users = User.all.paginate(page: params[:page], per_page: 10)
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'User was successfully created.'
-      redirect_to @user
+      redirect_to root_path
     else
       flash.now[:error] = I18n.t(:form_has_errors, scope: 'errors.messages')
       render :new, status: :unprocessable_entity
