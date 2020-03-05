@@ -24,7 +24,7 @@
         
         <td><img src="<%= post.photo %>" alt="can't display image" style="width: 150px;"></td>
         
-        <% if current_user.id == post.user.id %>
+        <% if @current_user.id == post.user.id %>
           <td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>'.html_safe, post %></td>
           
           <td>

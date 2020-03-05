@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
-  validates :email, :username, :password, presence: true
+  validates :email, :username, presence: true
 
   validates :email, length: { maximum: EMAIL_MAX_LENGTH,
                               if: :email }
@@ -89,5 +89,6 @@ class User < ApplicationRecord
 
   def downcase
     email&.downcase!
+    username&.downcase!
   end
 end

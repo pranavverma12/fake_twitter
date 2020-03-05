@@ -21,7 +21,7 @@
       
       <div class="post-footer">
         <p style="text-align: center;">
-          <% if current_user.id == @post.user.id %>
+          <% if @current_user.id == @post.user.id %>
             <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>'.html_safe, edit_post_path(@post), class: "defaultButton" %>
             <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'destroyButton' %>
           <% end %>

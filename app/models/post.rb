@@ -3,12 +3,11 @@
 class Post < ApplicationRecord
   DESCRIPTION_MIN_LENGTH = 10
 
-  attr_accessor :photo_file_name
-
   belongs_to :user
 
-  validates :user_id, presence: true
-  validates :description, presence: true, length: { minimum: DESCRIPTION_MIN_LENGTH }
+  validates :user_id, :description, presence: true
+  validates :description, length: { minimum: DESCRIPTION_MIN_LENGTH },
+                       		if: -> { description }
 
   default_scope -> { order(created_at: :desc) }
 end

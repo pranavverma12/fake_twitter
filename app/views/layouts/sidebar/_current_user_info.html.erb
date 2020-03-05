@@ -1,8 +1,8 @@
 <section id="sidebar-nav-user">
   <div class="username">
     <center>
-      <%= render "users/avatar", user: current_user, small: false%>
-      <%= link_to current_user.username, current_user %>      
+      <%= render "users/avatar", user: @current_user, small: false%>
+      <%= link_to @current_user.username, @current_user %>      
     </center>
   </div>
 </section>

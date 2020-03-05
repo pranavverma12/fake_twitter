@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :posts do
-    get :feeds, on: :member
+    get :feeds, on: :collection
   end
 
   resources :users do
