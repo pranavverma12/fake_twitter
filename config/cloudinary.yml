@@ -1,19 +1,19 @@
 ---
 development:
-  cloud_name: dcytgrhgd
-  api_key: '379811168911235'
-  api_secret: RNoETEBT1CqeO7vbkjIEEw04xmo
-  enhance_image_tag: true
-  static_file_support: false
+  cloud_name: <%= Rails.application.credentials[Rails.env.to_sym][:cloud_name] %>
+  api_key: <%= Rails.application.credentials[Rails.env.to_sym][:api_key] %>
+  api_secret: <%= Rails.application.credentials[Rails.env.to_sym][:api_secret] %>
+  enhance_image_tag: <%= Rails.application.credentials[Rails.env.to_sym][:enhance_image_tag] %>
+  static_file_support: <%= Rails.application.credentials[Rails.env.to_sym][:static_file_support] %>
 production:
-  cloud_name: dcytgrhgd
-  api_key: '379811168911235'
-  api_secret: RNoETEBT1CqeO7vbkjIEEw04xmo
-  enhance_image_tag: true
-  static_file_support: true
+  cloud_name: <%= Rails.application.credentials[Rails.env.to_sym][:cloud_name] %>
+  api_key: <%= Rails.application.credentials[Rails.env.to_sym][:api_key] %>
+  api_secret: <%= Rails.application.credentials[Rails.env.to_sym][:api_secret] %>
+  enhance_image_tag: <%= Rails.application.credentials[Rails.env.to_sym][:enhance_image_tag] %>
+  static_file_support: <%= Rails.application.credentials[Rails.env.to_sym][:static_file_support] %>
 test:
-  cloud_name: dcytgrhgd
-  api_key: '379811168911235'
-  api_secret: RNoETEBT1CqeO7vbkjIEEw04xmo
-  enhance_image_tag: true
-  static_file_support: false
+  cloud_name: <%= Rails.application.credentials[Rails.env.to_sym][:cloud_name] %>
+  api_key: <%= Rails.application.credentials[Rails.env.to_sym][:api_key] %>
+  api_secret: <%= Rails.application.credentials[Rails.env.to_sym][:api_secret] %>
+  enhance_image_tag: <%= Rails.application.credentials[Rails.env.to_sym][:enhance_image_tag] %>
+  static_file_support: <%= Rails.application.credentials[Rails.env.to_sym][:static_file_support] %>
