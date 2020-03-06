@@ -32,7 +32,7 @@
 
         <td><%= @user.updated_at.strftime("%H:%M:%S %A %d %B %Y") %></td>
 
-        <td><%= render 'follow_unfollow', user: @user %></td>
+        <td><%= render 'follow_unfollow', user: @user if current_user.id != @user.id %></td>
       </tr>
     </tbody>
   </table>

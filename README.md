@@ -9,7 +9,7 @@
 ### 4. Installation of the project:
 1. `rails 6.0.2.1`
 1. `ruby 2.5.7p206 (2019-10-01 revision 67816) [x64-mingw32]` 
-1. Clone this project
+1. Clone this repository.
 1. `bundle install` - install gems
 1. `bundle exec rake db:create` - set up sqlite database
 1. `bundle exec rake db:schema:load` - load the database schema into development database (if required)
@@ -76,4 +76,4 @@ The current features are provided (including controller tests):
 	3. Delete its own posts
 	4. See posts of it's own as well as user whom he/she is following.
 
-* Relationship will store the records of who is following whom.
+* Relationship table will store the records of which user is following whom.
